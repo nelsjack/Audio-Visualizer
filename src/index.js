@@ -1,7 +1,7 @@
 // Initializing an AudioContext to access Web Audio API methods
 const audioContext = new AudioContext();
-const watermelonManElement = document.querySelector('#watermelonman');
-const audioSource = audioContext.createMediaElementSource(watermelonManElement);
+const songElement = document.querySelector('#watermelonman');
+const audioSource = audioContext.createMediaElementSource(songElement);
 
 // plug audio element into the AudionContext and connect output to speakers
 audioSource.connect(audioContext.destination);
@@ -11,19 +11,19 @@ const playButtonNodeList = document.querySelectorAll("#playbutton");
 //look to add functionlity for  multiple tracks/play buttons, checking if button id === audio id (add playbutton class in HTML)
 playButtonNodeList.forEach((playButton) => {
     playButton.addEventListener('click', () => {
-        if (!watermelonManElement.paused) {
-            watermelonManElement.pause();
-        } else if (watermelonManElement.paused) {
-            watermelonManElement.play(); 
+        if (!songElement.paused) {
+            songElement.pause();
+        } else if (songElement.paused) {
+            songElement.play(); 
         }
         startAudioContext();
     });    
 });
-// AudioContext loads as suspended due to autoplay restrictions
+// AudioContext loads as suspended due to autoplzay restrictions
 const startAudioContext = () => {
     if (audioContext.state === 'suspended') {
         audioContext.resume();
-        watermelonManElement.play();
+        songElement.play();
     }
 };
 
