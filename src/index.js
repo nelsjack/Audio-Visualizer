@@ -32,7 +32,7 @@ const startAudioContext = () => {
 const analyser = audioContext.createAnalyser();
 audioSource.connect(analyser);
 
-analyser.fftSize = 256;
+analyser.fftSize = 512;
 const bufferLength = analyser.frequencyBinCount;
 const dataArray = new Uint8Array(bufferLength);
 
@@ -51,9 +51,9 @@ const draw = () => {
     let xAxis = 0;
 
     for (i = 0; i < bufferLength; i++) {
-        let barHeight = Math.pow(dataArray[i], 1.05);
+        const barHeight = Math.pow(dataArray[i], 1.05);
 
-        canvasContext.fillStyle = 'rgb(' + barHeight + ',250 , 200)';
+        canvasContext.fillStyle = 'rgb(' + (barHeight / 1.2) + ',250 , 200)';
         canvasContext.fillRect(xAxis, canvas.height-barHeight, barWidth, barHeight);
 
         xAxis += barWidth + 1;
