@@ -26,4 +26,5 @@ header {
     font-family: inherit;
     font-size: inherit;
     background-color: rgb(250, 250, 200);
+    cursor: pointer;
 }
